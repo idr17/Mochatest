@@ -1,12 +1,17 @@
 const assert = require('assert');
 const LoginController = require('../controller/auth.controller')
 
-describe('Auth test', () => {
+before('Load User List', () => {
+  const users = LoginController.loadUserList(['abc123','xyz321'])
+  assert.equal(users.length, 2);
+})
 
-  it('Should load user list', () => {
-    const users = LoginController.loadUserList(['abc123','xyz321'])
-    assert.equal(users.length, 2);
-  })
+after('Clear User List', () => {
+  const users = LoginController.clearUserList()
+  assert.equal(users.length, 0);
+})
+
+describe('Auth test', () => {
 
   // Sync auth scenario
   it('Should return true if valid userId sync ', () => {

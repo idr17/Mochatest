@@ -7,6 +7,11 @@ function LoginController () {
     return userList
   }
 
+  function clearUserList () {
+    userList = []
+    return userList
+  }
+
   // sync auth scenario
   function isValidUserId(user) {
     return userList.indexOf(user) >= 0
@@ -19,7 +24,7 @@ function LoginController () {
     }, 1)
   }
 
-  return { loadUserList, isValidUserId, isValidUserIdAsync }
+  return { loadUserList, isValidUserId, isValidUserIdAsync, clearUserList }
 }
 
 module.exports = LoginController()
